@@ -155,19 +155,6 @@ def generate_input_dict(in_dfs):
                  hela_pept_rts['pept_495'],hela_pept_rts['pept_567'],hela_pept_rts['pept_652'],
                  hela_pept_rts['pept_655'], ('Searched with '+str(sengine)))
 
-##    colnames = ('search_id','raw_file','file_date','search_date','instrument',
-##                'protein_number','peptide_number','psm_number',
-##                'msms_number','id_rate',
-##                'mean_psm_it_ms','median_psm_it_ms',
-##                'mean_msms_it_ms','median_msms_it_ms',
-##                'mean_mz_err_ppm','median_mz_err_ppm','mz_err_ppm_stdev',
-##                'total_prec_intensity','mean_prec_intensity',
-##                'mean_sengine_score',
-##                'mean_peak_width','peak_width_stdev',
-##                'pept_416','pept_425','pept_488','pept_495',
-##                'pept_567','pept_652','pept_655',
-##                'comment')
-
     out_dict = {}
     out_dict['Tuple for database'] = out_tuple
     out_dict['PSM inj time array'] = psm_inj_times
@@ -440,13 +427,10 @@ def return_protein_number(in_dfs):
 def show_histo(inlist,labl,divider):
     binnum = bin_number(inlist,divider)
     ax = plt.hist(x=inlist, bins=binnum,color='blue',alpha=0.7,rwidth=0.85)
-##    plt.grid(axis='y', alpha=0.75)
+
     plt.xlabel(labl)
     plt.ylabel('Frequency')
-##    plt.title('Wildcard Modification Masses from Byonic Search;'+
-##              ' Searched with fixed TMT at N-termini and K, and fixed CAM on C')
-##    plt.xticks(customticks)
-##    plt.show()
+
     return True
 
 def show_histo_fixedbinnum(inlist,labl,binnum):
@@ -674,9 +658,6 @@ if __name__ == '__main__':
     tableobj = ius.InputTables(input_params.return_all_table_properties())
     in_dfs = tableobj.return_all_tables()
 
-##    for i in in_dfs.keys():
-##        print(('<' + i + '>'))
-##        print(in_dfs[i].columns)
         
     # The dictionary contains extracted information from the latest Proteome Discoverer search
     fresh_data = generate_input_dict(in_dfs)
@@ -687,8 +668,6 @@ if __name__ == '__main__':
     
     conn = sqlite3.connect(dbase)
     
-##    result_tuple = generate_simulated_tuple()
-##    writing_succeeded = write_new_results(conn, table, result_tuple)
     writing_succeeded = write_new_results(conn, table, fresh_data['Tuple for database'])
 
     df = return_last_rows(conn, table, index_col, num, colnames)
