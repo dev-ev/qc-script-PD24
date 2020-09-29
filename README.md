@@ -1,15 +1,15 @@
 # QC_Script_PD2.4
 QC scripts for Proteome Discoverer 2.4
 
-Created and tested by Egor Vorontsov. Questions and concerns by e-mail at gmail: yegor dot msu.
+Created and tested by Egor Vorontsov. Questions and concerns by e-mail at gmail: yegor dot msu
 
-The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of Pierce HeLa digest.
+The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
 
 1) To start with, one needs to create an SQLite database. We have chosen to create one database file per actual mass spectrometer. The file should contain one or more tables for significantly different modes of use, for example the database for the Orbitrap Fusion Lumos mass spectrometer contains tables "lumos" and "lumos_faims", since these two modes are quite different and the QC results not very comparable between them. See the SQL columns below.
 
-2) We have later added the "service" table to each file. The table was primarily created to hold infromation on the cleaning interventions, since they are important for the performance of a mass spectrometer.
+2) I have later added the "service" table to each file. The table was primarily created to hold infromation on the cleaning interventions, since they are important for the performance of a mass spectrometer.
 
-3) One needs to specify the paths to the SQLite database files for each disctinct instrument mode, such as "fusion", "lumos", "lumos_faims" etc. We have simply placed the database files on the network drive that is accessible throughout the lab. The instrument name and mode of a QC run are inferred from the file name and form the information that is contained in the PD output.
+3) One needs to specify the paths to the SQLite database files for each disctinct instrument mode, such as "fusion", "lumos", "lumos_faims" etc. For a local solution, one could simply place the database files on the network drive that is accessible throughout from any computer that needs access to it. The instrument name and mode of a QC run are inferred from the file name and form the information that is contained in the PD output.
 
 4) The "reader_plotter" script is added to the Scripting Node, which is available in Proteome Discoverer since version 2.4:
 
