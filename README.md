@@ -17,7 +17,7 @@ The scripts collect the information from the Proteome Discoverer search of a QC 
 
 Python 3.7 has been working fine with the script. The script reads the output tables that have been saved as temporary files by PD, saves the key values to the SQLite database, and shows the main metrics from the current search as well as from the previous runs that correspond to the same instrument type. For convenience, the graphical report is saved as a png image, and the script launches the default image viewer program in order to show the report when it's ready:
 
-<img src="https://github.com/dev-ev/QC_Script_PD2.4/blob/master/QC_graphical_report_example.png" alt="drawing" width="1000"/>
+<img src="https://github.com/dev-ev/QC_Script_PD2.4/blob/master/QC_graphical_report_example.png" alt="drawing" width="800"/>
 
 Consider that only the key sums, averages and few other values are saved into the database, whereas the comprehensive information like the distribution of delta M vs retention time is only shown on the graphical report.
 
