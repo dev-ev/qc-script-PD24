@@ -13,7 +13,7 @@ The scripts collect the information from the Proteome Discoverer search of a QC 
 
 4) The "reader_plotter" script is added to the Scripting Node, which is available in Proteome Discoverer since version 2.4. Python 3.7 has been working fine with the script. The script reads the output tables that have been saved as temporary files by PD, saves the key values to the SQLite database, and shows the main metrics from the current search as well as from the previous runs that correspond to the same instrument type. For convenience, the graphical report is saved as a png image, and the script launches the default image viewer program in order to show the report when it's ready. Consider that only the key sums, averages and few other values are saved into the database, whereas the comprehensive information like the distribution of delta M vs retention time is only shown on the graphical report.
 
-The main QC table has the following columns:
+The main QC table contains the following columns:
 
 search_id INTEGER PRIMARY KEY,
 raw_file TEXT NOT NULL,
@@ -46,7 +46,7 @@ pept_652 REAL,
 pept_655 REAL,
 comment TEXT
 
-The "service" table has the following columns:
+The "service" table contains the following columns:
 
 procedure_id INTEGER PRIMARY KEY,
 date TEXT NOT NULL,
