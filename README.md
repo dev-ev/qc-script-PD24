@@ -5,7 +5,7 @@ Created and tested by Egor Vorontsov. Questions and concerns by e-mail at gmail:
 
 The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
 
-1) To start with, one needs to create an SQLite database. We have chosen to create one database file per actual mass spectrometer. The file should contain one or more tables for significantly different modes of use, for example the database for the Orbitrap Fusion Lumos mass spectrometer contains tables "lumos" and "lumos_faims", since these two modes are quite different and the QC results not very comparable between them. See the SQL columns below.
+1) To start with, one needs to create an SQLite database. I have chosen to create one database file per actual mass spectrometer, but I can see why it can be handy to change the structure, put all instruments in the same file and table etc. The file should contain one or more tables for significantly different modes of use, for example the database for the Orbitrap Fusion Lumos mass spectrometer contains tables "lumos" and "lumos_faims", since these two modes are quite different and the QC results not very comparable between them. See the SQL columns below.
 
 2) I have later added the "service" table to each file. The table was primarily created to hold infromation on the cleaning interventions, since they are important for the performance of a mass spectrometer.
 
