@@ -626,11 +626,11 @@ def write_new_results(conn, table, result_tuple):
 
 if __name__ == '__main__':
 
-    db_files = {'Lumos':'Z:\\Lumos\\QC\\QC_Reports\\QC_DB\\qc_lumos_st191029.db',
-                'Lumos_FAIMS':'Z:\\Lumos\\QC\\QC_Reports\\QC_DB\\qc_lumos_st191029.db',
-                'Fusion':'Z:\\Fusion\\QC\\QC_Reports\\QC_DB\\qc_fusion_st191029.db',
-                'Fusion_FAIMS':'Z:\\Fusion\\QC\\QC_Reports\\QC_DB\\qc_fusion_st191029.db',
-                'QEHF':'Z:\\QExactive HF\\QC\\QC_Reports\\QC_DB\\qc_qehf_st191107.db'}
+    db_files = {'Lumos':'full path\\qc_lumos_st191029.db',
+                'Lumos_FAIMS':'full path\\qc_lumos_st191029.db',
+                'Fusion':'full path\\qc_fusion_st191029.db',
+                'Fusion_FAIMS':'full path\\qc_fusion_st191029.db',
+                'QEHF':'full path\\qc_qehf_st191107.db'}
     
     index_col = 'search_id'
     colnames = ('search_id','raw_file','file_date','search_date','instrument',
