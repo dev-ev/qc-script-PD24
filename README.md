@@ -1,8 +1,6 @@
 # QC_Script_PD2.4
 QC scripts for Proteome Discoverer 2.4
 
-Created and tested by Egor Vorontsov.
-
 The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
 
 1) To start with, one needs to create an SQLite database. I have chosen to create one database file per actual mass spectrometer, but I can see why it can be handy to change the structure, put all instruments in the same file and table etc. The file should contain one or more tables for significantly different modes of use, for example the database for the Orbitrap Fusion Lumos mass spectrometer contains tables "lumos" and "lumos_faims", since these two modes are quite different and the QC results not very comparable between them. See the SQL columns below.
@@ -15,7 +13,7 @@ The scripts collect the information from the Proteome Discoverer search of a QC 
 
 <img src="https://github.com/dev-ev/QC_Script_PD2.4/blob/master/Screenshot_PD2.4_QC_ConsensusWF.PNG" alt="drawing" width="400"/>
 
-Python 3.7 has been working fine with the script. The script reads the output tables that have been saved as temporary files by PD, saves the key values to the SQLite database, and shows the main metrics from the current search as well as from the previous runs that correspond to the same instrument type. For convenience, the graphical report is saved as a png image, and the script launches the default image viewer program in order to show the report when it's ready:
+Python 3.7 has been tested and used with the script. The script reads the output tables that have been saved as temporary files by PD, saves the key values to the SQLite database, and shows the main metrics from the current search as well as from the previous runs that correspond to the same instrument type. For convenience, the graphical report is saved as a png image, and the script launches the default image viewer program in order to show the report when it's ready:
 
 <img src="https://github.com/dev-ev/QC_Script_PD2.4/blob/master/QC_graphical_report_example.png" alt="drawing" width="800"/>
 
@@ -23,41 +21,41 @@ Consider that only the key sums, averages and few other values are saved into th
 
 The main QC table contains the following columns:
 
-search_id INTEGER PRIMARY KEY,
-raw_file TEXT NOT NULL,
-file_date TEXT,
-search_date TEXT,
-instrument TEXT,
-protein_number INTEGER,
-peptide_number INTEGER NOT NULL,
-psm_number INTEGER NOT NULL,
-msms_number INTEGER NOT NULL,
-id_rate REAL,
-mean_psm_it_ms REAL,
-median_psm_it_ms REAL,
-mean_msms_it_ms REAL,
-median_msms_it_ms REAL,
-mean_mz_err_ppm REAL,
-median_mz_err_ppm REAL,
-mz_err_ppm_stdev REAL,
-total_prec_intensity REAL,
-mean_prec_intensity REAL,
-mean_sengine_score REAL,
-mean_peak_width REAL,
-peak_width_stdev REAL,
-pept_416 REAL,
-pept_425 REAL,
-pept_488 REAL,
-pept_495 REAL,
-pept_567 REAL,
-pept_652 REAL,
+search_id INTEGER PRIMARY KEY,<br>
+raw_file TEXT NOT NULL,<br>
+file_date TEXT,<br>
+search_date TEXT,<br>
+instrument TEXT,<br>
+protein_number INTEGER,<br>
+peptide_number INTEGER NOT NULL,<br>
+psm_number INTEGER NOT NULL,<br>
+msms_number INTEGER NOT NULL,<br>
+id_rate REAL,<br>
+mean_psm_it_ms REAL,<br>
+median_psm_it_ms REAL,<br>
+mean_msms_it_ms REAL,<br>
+median_msms_it_ms REAL,<br>
+mean_mz_err_ppm REAL,<br>
+median_mz_err_ppm REAL,<br>
+mz_err_ppm_stdev REAL,<br>
+total_prec_intensity REAL,<br>
+mean_prec_intensity REAL,<br>
+mean_sengine_score REAL,<br>
+mean_peak_width REAL,<br>
+peak_width_stdev REAL,<br>
+pept_416 REAL,<br>
+pept_425 REAL,<br>
+pept_488 REAL,<br>
+pept_495 REAL,<br>
+pept_567 REAL,<br>
+pept_652 REAL,<br>
 pept_655 REAL,
 comment TEXT
 
 The "service" table contains the following columns:
 
-procedure_id INTEGER PRIMARY KEY,
-date TEXT NOT NULL,
-type TEXT,
-is_pm TEXT,
-comment TEXT
+procedure_id INTEGER PRIMARY KEY,<br>
+date TEXT NOT NULL,<br>
+type TEXT,<br>
+is_pm TEXT,<br>
+comment TEXT<br>
