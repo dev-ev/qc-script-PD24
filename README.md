@@ -49,8 +49,8 @@ pept_488 REAL,<br>
 pept_495 REAL,<br>
 pept_567 REAL,<br>
 pept_652 REAL,<br>
-pept_655 REAL,
-comment TEXT
+pept_655 REAL,<br>
+comment TEXT<br>
 
 The "service" table contains the following columns:
 
