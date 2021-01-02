@@ -168,33 +168,6 @@ def generate_input_dict(in_dfs):
     
     return out_dict
 
-def generate_simulated_tuple():
-
-    fname = 'Nothing_' + str(np.random.randint(10,200)) + '.raw'
-    d = '2019/10/' + str(np.random.randint(10,31))
-    s = '2019/10/24'
-    i = 'Lumos'
-    psmn = np.random.randint(8000,14000)
-    pn = psmn - np.random.randint(50,500)
-    msmsn = np.random.randint(25000,33000)
-    mean_psm_it = 10 + 15*np.random.random()
-    median_psm_it = mean_psm_it - np.random.randint(1,5)
-    mean_it = 15 + 15*np.random.random()
-    median_it = mean_it - np.random.randint(1,5)
-    mean_er = np.random.randint(-5,5)*np.random.random()
-    median_er = mean_er - 0.1*mean_er*np.random.random()
-    er_dev = abs(mean_er)*0.5*np.random.random()
-    mean_int = np.random.randint(600000,2000000)
-    mean_score = 15 + 15*np.random.random()
-    
-    out_tuple = (None,fname,d,s,i,1800,pn,psmn,msmsn,psmn/msmsn,
-                 mean_psm_it,median_psm_it,mean_it,median_it,
-                 mean_er,median_er,er_dev,
-                 mean_int,mean_score,
-                 27,25,19.1,35.5,16.5,32.1,40.6,
-                 'Simulated')
-    return out_tuple
-
 def get_console_arg():
     try:
         assert (len(sys.argv) == 2), "Script requires only one parameter"
