@@ -1,4 +1,4 @@
-# QC_Script_PD2.4
+# qc-script-PD24
 QC scripts for Proteome Discoverer 2.4
 
 The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
