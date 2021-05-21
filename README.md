@@ -1,7 +1,7 @@
 # qc-script-PD24
-QC scripts for Proteome Discoverer 2.4
+## QC script for the Scripting Node in Proteome Discoverer 2.4
 
-The scripts collect the information from the Proteome Discoverer search of a QC LC-MS run, save the key values into a database and create a visualization of the latest QC results. The database and visualizations are adapted for the Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
+The script collects the information from the Proteome Discoverer search output for a LC-MS QC run, saves the key values into a database and creates a visualization of the most recent QC results. The database and visualizations are adapted for Mascot searches and the injections of 50 ng of HeLa cell tryptic digest.
 
 1) To start with, one needs to create an SQLite database. I have chosen to create one database file per actual mass spectrometer, but I can see why it can be handy to change the structure, put all instruments in the same file and table etc. The file should contain one or more tables for significantly different modes of use, for example the database for the Orbitrap Fusion Lumos mass spectrometer contains tables "lumos" and "lumos_faims", since these two modes are quite different and the QC results not very comparable between them. See the SQL columns below.
 
