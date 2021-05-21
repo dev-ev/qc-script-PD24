@@ -21,41 +21,41 @@ Consider that only the key sums, averages and few other values are saved into th
 
 The main QC table contains the following columns:
 
-    search_id INTEGER PRIMARY KEY,<br>
-    raw_file TEXT NOT NULL,<br>
-    file_date TEXT,<br>
-    search_date TEXT,<br>
-    instrument TEXT,<br>
-    protein_number INTEGER,<br>
-    peptide_number INTEGER NOT NULL,<br>
-    psm_number INTEGER NOT NULL,<br>
-    msms_number INTEGER NOT NULL,<br>
-    id_rate REAL,<br>
-    mean_psm_it_ms REAL,<br>
-    median_psm_it_ms REAL,<br>
-    mean_msms_it_ms REAL,<br>
-    median_msms_it_ms REAL,<br>
-    mean_mz_err_ppm REAL,<br>
-    median_mz_err_ppm REAL,<br>
-    mz_err_ppm_stdev REAL,<br>
-    total_prec_intensity REAL,<br>
-    mean_prec_intensity REAL,<br>
-    mean_sengine_score REAL,<br>
-    mean_peak_width REAL,<br>
-    peak_width_stdev REAL,<br>
-    pept_416 REAL,<br>
-    pept_425 REAL,<br>
-    pept_488 REAL,<br>
-    pept_495 REAL,<br>
-    pept_567 REAL,<br>
-    pept_652 REAL,<br>
-    pept_655 REAL,<br>
-    comment TEXT<br>
+    search_id INTEGER PRIMARY KEY,
+    raw_file TEXT NOT NULL,
+    file_date TEXT,
+    search_date TEXT,
+    instrument TEXT,
+    protein_number INTEGER,
+    peptide_number INTEGER NOT NULL,
+    psm_number INTEGER NOT NULL,
+    msms_number INTEGER NOT NULL,
+    id_rate REAL,
+    mean_psm_it_ms REAL,
+    median_psm_it_ms REAL,
+    mean_msms_it_ms REAL,
+    median_msms_it_ms REAL,
+    mean_mz_err_ppm REAL,
+    median_mz_err_ppm REAL,
+    mz_err_ppm_stdev REAL,
+    total_prec_intensity REAL,
+    mean_prec_intensity REAL,
+    mean_sengine_score REAL,
+    mean_peak_width REAL,
+    peak_width_stdev REAL,
+    pept_416 REAL,
+    pept_425 REAL,
+    pept_488 REAL,
+    pept_495 REAL,
+    pept_567 REAL,
+    pept_652 REAL,
+    pept_655 REAL,
+    comment TEXT
 
 The "service" table contains the following columns:
 
-    procedure_id INTEGER PRIMARY KEY,<br>
-    date TEXT NOT NULL,<br>
-    type TEXT,<br>
-    is_pm TEXT,<br>
-    comment TEXT<br>
+    procedure_id INTEGER PRIMARY KEY,
+    date TEXT NOT NULL,
+    type TEXT,
+    is_pm TEXT,
+    comment TEXT
