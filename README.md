@@ -21,41 +21,41 @@ Consider that only the key sums, averages and few other values are saved into th
 
 The main QC table contains the following columns:
 
-search_id INTEGER PRIMARY KEY,<br>
-raw_file TEXT NOT NULL,<br>
-file_date TEXT,<br>
-search_date TEXT,<br>
-instrument TEXT,<br>
-protein_number INTEGER,<br>
-peptide_number INTEGER NOT NULL,<br>
-psm_number INTEGER NOT NULL,<br>
-msms_number INTEGER NOT NULL,<br>
-id_rate REAL,<br>
-mean_psm_it_ms REAL,<br>
-median_psm_it_ms REAL,<br>
-mean_msms_it_ms REAL,<br>
-median_msms_it_ms REAL,<br>
-mean_mz_err_ppm REAL,<br>
-median_mz_err_ppm REAL,<br>
-mz_err_ppm_stdev REAL,<br>
-total_prec_intensity REAL,<br>
-mean_prec_intensity REAL,<br>
-mean_sengine_score REAL,<br>
-mean_peak_width REAL,<br>
-peak_width_stdev REAL,<br>
-pept_416 REAL,<br>
-pept_425 REAL,<br>
-pept_488 REAL,<br>
-pept_495 REAL,<br>
-pept_567 REAL,<br>
-pept_652 REAL,<br>
-pept_655 REAL,<br>
-comment TEXT<br>
+    search_id INTEGER PRIMARY KEY,<br>
+    raw_file TEXT NOT NULL,<br>
+    file_date TEXT,<br>
+    search_date TEXT,<br>
+    instrument TEXT,<br>
+    protein_number INTEGER,<br>
+    peptide_number INTEGER NOT NULL,<br>
+    psm_number INTEGER NOT NULL,<br>
+    msms_number INTEGER NOT NULL,<br>
+    id_rate REAL,<br>
+    mean_psm_it_ms REAL,<br>
+    median_psm_it_ms REAL,<br>
+    mean_msms_it_ms REAL,<br>
+    median_msms_it_ms REAL,<br>
+    mean_mz_err_ppm REAL,<br>
+    median_mz_err_ppm REAL,<br>
+    mz_err_ppm_stdev REAL,<br>
+    total_prec_intensity REAL,<br>
+    mean_prec_intensity REAL,<br>
+    mean_sengine_score REAL,<br>
+    mean_peak_width REAL,<br>
+    peak_width_stdev REAL,<br>
+    pept_416 REAL,<br>
+    pept_425 REAL,<br>
+    pept_488 REAL,<br>
+    pept_495 REAL,<br>
+    pept_567 REAL,<br>
+    pept_652 REAL,<br>
+    pept_655 REAL,<br>
+    comment TEXT<br>
 
 The "service" table contains the following columns:
 
-procedure_id INTEGER PRIMARY KEY,<br>
-date TEXT NOT NULL,<br>
-type TEXT,<br>
-is_pm TEXT,<br>
-comment TEXT<br>
+    procedure_id INTEGER PRIMARY KEY,<br>
+    date TEXT NOT NULL,<br>
+    type TEXT,<br>
+    is_pm TEXT,<br>
+    comment TEXT<br>
