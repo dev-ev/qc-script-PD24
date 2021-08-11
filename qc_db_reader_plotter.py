@@ -12,9 +12,9 @@ import sys
 import warnings
 
 
-''' Direct questions and concerns regarding this script to Egor Vorontsov
+""" Direct questions and concerns regarding this script to Egor Vorontsov
     egor.vorontsov@gu.se
-'''
+"""
 
 def bin_number(inlist,divider):
     span = max(inlist) - min(inlist)
@@ -22,14 +22,14 @@ def bin_number(inlist,divider):
     return int(span/divider)
 
 def create_reporting_fnames(qc_db_path, num_res, inst_name, raw_fname):
-    ''' Creates the filenames for the graphical report and Excel output
+    """ Creates the filenames for the graphical report and Excel output
         Based on the relative path which depends on the QC database path qc_db_path
         num_res: the number of the latest results fetched from the database
         inst_name: instrument name
         raw_fname: raw file name
         returns the dictionary:
         {'excel_out':full path, 'graph_out':full_path}
-    '''
+    """
     qc_db_pobj = pathlib.Path(qc_db_path)
     excel_name = inst_name + '_latest_' + str(num_res) + '_results.xlsx'
     excel_path = qc_db_pobj.parents[1].joinpath(excel_name)
@@ -39,9 +39,9 @@ def create_reporting_fnames(qc_db_path, num_res, inst_name, raw_fname):
     return {'excel_out':excel_path, 'graph_out':png_path}
 
 def find_hela_peptides(in_dfs):
-    ''' Finds the retention times of the 7 selected peptides from the Peptide Groups table.
+    """ Finds the retention times of the 7 selected peptides from the Peptide Groups table.
         Returns 45.0 min if the peptide is not found
-    '''
+    """
     selected_hela_peptides = {'STELLIR':'pept_416',
                               'HLQLAIR':'pept_425',
                               'AGFAGDDAPR':'pept_488',
@@ -72,7 +72,7 @@ def find_hela_peptides(in_dfs):
         return None
 
 def fname_to_instrument(infname):
-    '''Decides on the instrument name based on the file name'''
+    """Determines the instrument name based on the file name"""
     infname = infname.lower()
     instrument_name = None
     if ('lumos_' in infname) and ('faims' in infname):
@@ -93,7 +93,7 @@ def fname_to_instrument(infname):
     return instrument_name
 
 def generate_input_dict(in_dfs):
-    ''' Reads the dictionary of the experimental tables.
+    """ Reads the dictionary of the experimental tables.
         Generates the tuple for writing into the SQLite DB,
         As well as the arrays that are used for plotting.
         The output is a dictionary:
@@ -107,7 +107,7 @@ def generate_input_dict(in_dfs):
         'RT array':np.array,
         'Search engine score array':np.array
         }
-    '''
+    """
     rawfnames, rawfdates, instr_from_fn, _ = parse_table_input_file(in_dfs)
     search_time = datetime.datetime.now().isoformat(timespec='seconds')
     
@@ -181,13 +181,13 @@ def get_console_arg():
         return None
 
 def parse_cons_features(in_dfs):
-    ''' If the Consensus Features table is present, returns the tuple with peak properties
+    """ If the Consensus Features table is present, returns the tuple with peak properties
         (for features with charge 2 or higher):
         (mean peak width in s, st dev of peak width in s,
         numpy array of peak widths in s, numpy array of feature intensity)
         If the Consensus Features table is absent, returns
         (None, None, numpy array of zeroes, None)
-    '''
+    """
     if 'Consensus Features' in in_dfs.keys():
         try:
             df = in_dfs['Consensus Features']
@@ -221,9 +221,9 @@ def parse_cons_features(in_dfs):
         return (None, None, np.zeros(100,dtype=int), None, None)
 
 def parse_qc_table_msms(in_dfs):
-    ''' Returns a tuple of numpy arrays
+    """ Returns a tuple of numpy arrays
         (injection times array, precursor intens array)
-        '''
+    """
     try:
         # Select the MSMS df from the dictionary
         df = in_dfs['MS/MS Spectrum Info']
@@ -236,13 +236,13 @@ def parse_qc_table_msms(in_dfs):
         return None
 
 def parse_qc_table_psm(in_dfs):
-    ''' Returns a tuple of numpy arrays
+    """ Returns a tuple of numpy arrays
         (m/z values, MH+ mass values, ppm mass errors, ret times,
         search engine scores, search engine, ions matched per PSM)
         The search engine score to use dependes on what columns are present in the file.
         If neither Ions Score nor Xcorr column is found, returns an array made of zeros:
         sengine: 'Mascot' or 'Sequest', default is 'Mascot'
-        '''
+        """
 
     try:
         # Select the score. Currently recognizes Mascot and Sequest
@@ -287,9 +287,9 @@ def parse_qc_table_psm(in_dfs):
         return None
 
 def parse_table_input_file(in_dfs):
-    ''' Returns a tuple
+    """ Returns a tuple
         (instrument name list, creation date list, instr from name list, instr from metadata list)
-        '''
+        """
     try:
         # Select the Input Files df from the dictionary
         df = in_dfs['Input Files']
@@ -363,8 +363,8 @@ def return_last_rows(conn, table, index_col, num, colnames):
     return df
 
 def return_latest_psm_is(df, id_col, file_col, instr_col, psm_col):
-    ''' Extracts info on PSM number, search ID and Instrument from the last row in DB
-    '''
+    """ Extracts info on PSM number, search ID and Instrument from the last row in DB
+    """
     last_row = df.iloc[-1]
     search_id = last_row[id_col]
     instr = last_row[instr_col]
@@ -374,8 +374,8 @@ def return_latest_psm_is(df, id_col, file_col, instr_col, psm_col):
     return (search_id, instr, psm, psm_string)
 
 def return_peptide_number(in_dfs):
-    ''' Returns the number of peptides based on the Peptide table
-        '''
+    """ Returns the number of peptides based on the Peptide table
+        """
     try:
         # Select the Peptide Groups df from the dictionary
         df = in_dfs['Peptide Groups']
@@ -385,8 +385,8 @@ def return_peptide_number(in_dfs):
         return None
 
 def return_protein_number(in_dfs):
-    ''' Returns the number of Master proteins based on the Proteins table
-        '''
+    """ Returns the number of Master proteins based on the Proteins table
+        """
     try:
         # Select the Proteins df from the dictionary
         df = in_dfs['Proteins']
@@ -414,13 +414,13 @@ def show_histo_fixedbinnum(inlist,labl,binnum):
     return True
 
 def show_plots(df,fresh_data,plotsavingpath='D:\\plot.png',onlysave=False):
-    ''' Shows the plots in the pre-defined layout.
+    """ Shows the plots in the pre-defined layout.
         Requires the DataFrame df with thw latest N results from the database,
         And the fresh_data dictionary, that contains the necessary arrays from the new data.
         onlysave - bool, default is False
         If onlysave is False, the plot will be shown,
         If onlysave is True, the plot will be saved into the file plotsavingpath
-    '''
+    """
     sid, latest_instr, psmnum, text_string = return_latest_psm_is(df, index_col, 'raw_file',
                                                                   'instrument', 'psm_number')
     f = plt.figure(figsize=(27,12),dpi=100)
@@ -576,9 +576,10 @@ def testing_load_example_files():
     return df_dict
 
 def write_new_results(conn, table, result_tuple):
-    '''You need to make sure that the input tuple has the proper length and format.
+    """You need to make sure that the input tuple has the proper length and format.
         The function will return False if the writing results in error.
-        But if the writing and successful, but formatting is wrong, it will not check for it.'''
+        But if the writing and successful, but formatting is wrong, it will not check for it.
+        """
     writing_successful = False
     cur = conn.cursor()
 
